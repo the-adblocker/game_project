@@ -5,6 +5,7 @@ from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT)
 from player import Player
 from storeitem import Storeitem
 from speeup import Speedup
+from pointboost import Pointboost
 
 fps = 24
 
@@ -23,7 +24,7 @@ pg.display.set_caption("super awesome game project")
 
 points = 0
 speed = 0.5
-
+bounce = 2
 
 font = pg.font.Font('freesansbold.ttf', 32)
 
@@ -33,6 +34,7 @@ player = Player(0, 0, window, speed, speed, page_w, page_h)
 
 #store items
 speedshop = Speedup("speed", 5, 64, window, 50, page_h-114, 1.5)
+pointboostshop = Pointboost("boost", 10, 64, window, 164, page_h-114, 1.5)
 
 
 
@@ -43,7 +45,7 @@ speedshop = Speedup("speed", 5, 64, window, 50, page_h-114, 1.5)
 
 logos = [player]
 
-store = [speedshop]
+store = [speedshop, pointboostshop]
 
 
 
@@ -61,10 +63,7 @@ while running:
 
 
 
-    if player._x+64 >= player._w or player._x < 0:
-        points += 2
-    if player._y+64 >= player._h or player._y <0:
-        points += 2
+
 
 
     #score
@@ -78,8 +77,12 @@ while running:
             if pos[0] >= i._x and pos[0] <= i._x+64 and pos[1] >= i._y and pos[1] <= i._y+64:
                 i._x += i._speedx*1.5
                 i._y += i._speedy*1.5
-                points += 0.05
+                points += bounce/4
                 points = round(points, 2)
+        if i._x+64 >= i._w or i._x < 0:
+            points += bounce
+        if i._y+64 >= i._h or i._y <0:
+            points += bounce
         # if points >= 20:
         #     points -= 20
         #     player._speedx *= 1.1
@@ -98,6 +101,8 @@ while running:
                         for j in logos:
                             j._speedx *= 1.5
                             j._speedy *= 1.5
+                    elif i._type == "boost":
+                        bounce += 2
 
 
    
