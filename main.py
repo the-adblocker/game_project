@@ -93,10 +93,11 @@ while running:
             if pos[0] >= i._x and pos[0] <= i._x+64 and pos[1] >= i._y and pos[1] <= i._y+64:
                 if points >= i._price:
                     points -= i._price
+                    i._price += i._price
                     if i._type == "speed":
                         for j in logos:
-                            j._speedx *= 12.1
-                            j._speedy *= 12.1
+                            j._speedx *= 1.5
+                            j._speedy *= 1.5
 
 
    
