@@ -3,6 +3,7 @@ import pygame as pg
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT)
 
 from player import Player
+from storeitem import Storeitem
 
 fps = 24
 
@@ -24,6 +25,7 @@ speed = 0.5
 
 
 player = Player(0, 0, window, speed, speed, page_w, page_h)
+test_shop = Storeitem(30, 64, window, 50, page_h-114)
 
 
 
@@ -33,7 +35,7 @@ font = pg.font.Font('freesansbold.ttf', 32)
 
 
 
-
+logos = [player]
 
 
 
@@ -44,7 +46,12 @@ while running:
             running = False
     window.fill((150, 130, 150))
 
+
+    #runs the classes
     player.drawn()
+    test_shop.loop()
+
+
 
     if player._x+64 >= player._w or player._x < 0:
         points += 2
@@ -57,17 +64,18 @@ while running:
     window.blit(text, (5, 5))
         
     #clickability
-    if event.type == pg.MOUSEBUTTONUP:
-        pos = pg.mouse.get_pos()
-        if pos[0] >= player._x and pos[0] <= player._x+64 and pos[1] >= player._y and pos[1] <= player._y+64:
-            player._x += player._speedx*3
-            player._y += player._speedy*3
-            points += 0.1
-            points = round(points, 2)
-    if points >= 20:
-        points -= 20
-        player._speedx *= 1.1
-        player._speedy *= 1.1
+    for i in logos:
+        if event.type == pg.MOUSEBUTTONUP:
+            pos = pg.mouse.get_pos()
+            if pos[0] >= i._x and pos[0] <= i._x+64 and pos[1] >= i._y and pos[1] <= i._y+64:
+                i._x += i._speedx*1.5
+                i._y += i._speedy*1.5
+                points += 0.05
+                points = round(points, 2)
+        if points >= 20:
+            points -= 20
+            player._speedx *= 1.1
+            player._speedy *= 1.1
    
     pg.display.update()
     clock.tick(fps)
