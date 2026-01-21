@@ -13,7 +13,7 @@ class Player:
         self._speedy = speedy
         self._w = width
         self._h = heigth
-        pass
+        
 
     def drawn(self):
         self._window.blit(dvd_logo, pg.rect.Rect(self._x,self._y, 30, 30))

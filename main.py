@@ -6,6 +6,7 @@ from player import Player
 from storeitem import Storeitem
 from speeup import Speedup
 from pointboost import Pointboost
+from more import More
 
 fps = 24
 
@@ -35,6 +36,7 @@ player = Player(0, 0, window, speed, speed, page_w, page_h)
 #store items
 speedshop = Speedup("speed", 5, 64, window, 50, page_h-114, 1.5)
 pointboostshop = Pointboost("boost", 10, 64, window, 164, page_h-114, 1.5)
+moreshop = More("more", 50, 64, window, 164+50+64, page_h-114)
 
 
 
@@ -45,7 +47,7 @@ pointboostshop = Pointboost("boost", 10, 64, window, 164, page_h-114, 1.5)
 
 logos = [player]
 
-store = [speedshop, pointboostshop]
+store = [speedshop, pointboostshop, moreshop]
 
 
 
@@ -58,7 +60,7 @@ while running:
 
 
     #runs the classes
-    player.drawn()
+    
 
 
 
@@ -72,6 +74,7 @@ while running:
         
     #clickability
     for i in logos:
+        i.drawn()
         if event.type == pg.MOUSEBUTTONUP:
             pos = pg.mouse.get_pos()
             if pos[0] >= i._x and pos[0] <= i._x+64 and pos[1] >= i._y and pos[1] <= i._y+64:
@@ -91,6 +94,9 @@ while running:
     #store
     for i in store:
         i.loop()
+        #shop prices
+        shoptxt = font.render(str(i._price), True, (0, 0, 0), (255, 255, 255))
+        window.blit(shoptxt, (i._x, i._y-35))
         if event.type == pg.MOUSEBUTTONUP:
             pos = pg.mouse.get_pos()
             if pos[0] >= i._x and pos[0] <= i._x+64 and pos[1] >= i._y and pos[1] <= i._y+64:
@@ -98,11 +104,16 @@ while running:
                     points -= i._price
                     i._price += i._price
                     if i._type == "speed":
+                        speed *= 1.5
                         for j in logos:
                             j._speedx *= 1.5
                             j._speedy *= 1.5
+
                     elif i._type == "boost":
                         bounce += 2
+                    elif i._type == "more":
+                        logos.append(Player(1, 1, window, speed*(1+(0.1*randint(-9, 9))), speed*(1+(0.1*randint(-9, 9))), page_w, page_h))
+
 
 
    
