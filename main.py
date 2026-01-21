@@ -77,7 +77,7 @@ while running:
             if pos[0] >= i._x and pos[0] <= i._x+64 and pos[1] >= i._y and pos[1] <= i._y+64:
                 i._x += i._speedx*1.5
                 i._y += i._speedy*1.5
-                points += bounce/4
+                points += bounce/40
                 points = round(points, 2)
         if i._x+64 >= i._w or i._x < 0:
             points += bounce
