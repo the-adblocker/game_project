@@ -1,6 +1,9 @@
 import pygame as pg
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT)
 
+dvd_logo = pg.image.load("assets/temp_dvd.png")
+
+
 class Player:
     def __init__(self, x, y, window, speedx, speedy, width, heigth):
         self._x = x
@@ -13,7 +16,8 @@ class Player:
         pass
 
     def drawn(self):
-        pg.draw.rect(self._window, (210, 20, 0), (self._x,self._y, 64, 64))
+        self._window.blit(dvd_logo, pg.rect.Rect(self._x,self._y, 30, 30))
+        #pg.draw.rect(self._window, (210, 20, 0), (self._x,self._y, 64, 64))
         self._x += self._speedx
         self._y += self._speedy
 
