@@ -2,10 +2,14 @@ import pygame as pg
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT)
 
 dvd_logo = pg.image.load("assets/temp_dvd.png")
+dvd_logo2 = pg.image.load("assets/temp_dvd2.png")
+dvd_logo3 = pg.image.load("assets/temp_dvd3.png")
+dvd_logo4 = pg.image.load("assets/temp_dvd4.png")
+everyman = pg.image.load("assets/everyman.png")
 
 
 class Player:
-    def __init__(self, x, y, window, speedx, speedy, width, heigth):
+    def __init__(self, x, y, window, speedx, speedy, width, heigth, randspr):
         self._x = x
         self._y = y
         self._window = window
@@ -13,10 +17,19 @@ class Player:
         self._speedy = speedy
         self._w = width
         self._h = heigth
-        
+        self._spr = randspr
 
     def drawn(self):
-        self._window.blit(dvd_logo, pg.rect.Rect(self._x,self._y, 30, 30))
+        if self._spr == 1:
+            self._window.blit(everyman, pg.rect.Rect(self._x,self._y, 30, 30))
+        elif self._spr <= 3:
+            self._window.blit(dvd_logo2, pg.rect.Rect(self._x,self._y, 30, 30))
+        elif self._spr <= 5:
+            self._window.blit(dvd_logo3, pg.rect.Rect(self._x,self._y, 30, 30))
+        elif self._spr <= 7:
+            self._window.blit(dvd_logo4, pg.rect.Rect(self._x,self._y, 30, 30))
+        else:
+            self._window.blit(dvd_logo, pg.rect.Rect(self._x,self._y, 30, 30))
         #pg.draw.rect(self._window, (210, 20, 0), (self._x,self._y, 64, 64))
         self._x += self._speedx
         self._y += self._speedy
