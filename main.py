@@ -13,7 +13,7 @@ fps = 24
 page_w = 768
 page_h = 576
 clock = pg.time.Clock()
-
+bg = pg.image.load("assets/temp_bg.png")
 
 pg.init()
 
@@ -59,7 +59,7 @@ while running:
     window.fill((150, 130, 150))
 
 
-    #runs the classes
+    window.blit(bg, pg.rect.Rect(0, 0, 30, 30))
     
 
 
@@ -104,7 +104,7 @@ while running:
                     points -= i._price
                     i._price += i._price
                     if i._type == "speed":
-                        speed *= 1.5
+                        speed *= 1.1
                         for j in logos:
                             j._speedx *= 1.5
                             j._speedy *= 1.5

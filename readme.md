@@ -1,4 +1,4 @@
 ### THE PLAN
-Have you heard of idle games? \
-Have you heard of the dvd logo? \
-Then you know the base plan
+
+An idle game inspired by the iconic bouncing DVD logo \
+The logos bouncing earns you points to buy upgrades that allows for more points and more logos.
