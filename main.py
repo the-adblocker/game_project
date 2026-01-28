@@ -31,7 +31,7 @@ font = pg.font.Font('freesansbold.ttf', 32)
 
 
 
-player = Player(0, 0, window, speed, speed, page_w, page_h, randint(2, 21))
+player = Player(0, 0, window, speed, speed, page_w, page_h, randint(2, 29))
 
 #store items
 speedshop = Speedup("speed", 5, 64, window, 10, page_h-114-64-64+30, 1.5)
@@ -79,9 +79,9 @@ while running:
                                 j._speedx *= 1.5
                                 j._speedy *= 1.5
                         elif i._type == "boost":
-                            bounce += 2
+                            bounce += 1 + (0.1*bounce)
                         elif i._type == "more":
-                            logos.append(Player(1, 1, window, speed*(1+(0.1*randint(-9, 9))), speed*(1+(0.1*randint(-9, 9))), page_w, page_h, randint(2, 21)))
+                            logos.append(Player(1, 1, window, speed*(1+(0.1*randint(-9, 9))), speed*(1+(0.1*randint(-9, 9))), page_w, page_h, randint(2, 29)))
 
 
 
@@ -105,10 +105,10 @@ while running:
 
         if i._x+64 >= i._w or i._x < 0:
             points += bounce
-            i._spr = randint(1,21)
+            i._spr = randint(1,29)
         if i._y+64 >= i._h or i._y <0:
             points += bounce
-            i._spr = randint(1,21)
+            i._spr = randint(1,29)
             # if points >= 20:
             #     points -= 20
             #     player._speedx *= 1.1
