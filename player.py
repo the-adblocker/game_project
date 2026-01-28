@@ -5,6 +5,7 @@ dvd_logo = pg.image.load("assets/temp_dvd.png")
 dvd_logo2 = pg.image.load("assets/temp_dvd2.png")
 dvd_logo3 = pg.image.load("assets/temp_dvd3.png")
 dvd_logo4 = pg.image.load("assets/temp_dvd4.png")
+dvd_logo5 = pg.image.load("assets/temp_dvd5.png")
 everyman = pg.image.load("assets/everyman.png")
 
 
@@ -22,12 +23,14 @@ class Player:
     def drawn(self):
         if self._spr == 1:
             self._window.blit(everyman, pg.rect.Rect(self._x,self._y, 30, 30))
-        elif self._spr <= 3:
-            self._window.blit(dvd_logo2, pg.rect.Rect(self._x,self._y, 30, 30))
         elif self._spr <= 5:
+            self._window.blit(dvd_logo2, pg.rect.Rect(self._x,self._y, 30, 30))
+        elif self._spr <= 9:
             self._window.blit(dvd_logo3, pg.rect.Rect(self._x,self._y, 30, 30))
-        elif self._spr <= 7:
+        elif self._spr <= 13:
             self._window.blit(dvd_logo4, pg.rect.Rect(self._x,self._y, 30, 30))
+        elif self._spr <= 17:
+            self._window.blit(dvd_logo5, pg.rect.Rect(self._x,self._y, 30, 30))
         else:
             self._window.blit(dvd_logo, pg.rect.Rect(self._x,self._y, 30, 30))
         #pg.draw.rect(self._window, (210, 20, 0), (self._x,self._y, 64, 64))
