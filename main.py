@@ -31,12 +31,12 @@ font = pg.font.Font('freesansbold.ttf', 32)
 
 
 
-player = Player(0, 0, window, speed, speed, page_w, page_h, 2)
+player = Player(0, 0, window, speed, speed, page_w, page_h, randint(2, 21))
 
 #store items
-speedshop = Speedup("speed", 5, 64, window, 50, page_h-114, 1.5)
-pointboostshop = Pointboost("boost", 10, 64, window, 164, page_h-114, 1.5)
-moreshop = More("more", 50, 64, window, 164+50+64, page_h-114)
+speedshop = Speedup("speed", 5, 64, window, 10, page_h-114-64-64+30, 1.5)
+pointboostshop = Pointboost("boost", 10, 64, window, 164-54, page_h-114-64+30, 1.5)
+moreshop = More("more", 50, 64, window, 164+50, page_h-114+30)
 
 
 
@@ -74,14 +74,14 @@ while running:
                         points -= i._price
                         i._price += i._price
                         if i._type == "speed":
-                            speed *= 1.1
+                            speed *= 1.3
                             for j in logos:
                                 j._speedx *= 1.5
                                 j._speedy *= 1.5
                         elif i._type == "boost":
                             bounce += 2
                         elif i._type == "more":
-                            logos.append(Player(1, 1, window, speed*(1+(0.1*randint(-9, 9))), speed*(1+(0.1*randint(-9, 9))), page_w, page_h, 2))
+                            logos.append(Player(1, 1, window, speed*(1+(0.1*randint(-9, 9))), speed*(1+(0.1*randint(-9, 9))), page_w, page_h, randint(2, 21)))
 
 
 
@@ -95,7 +95,7 @@ while running:
 
 
 
-        #score
+    #score
     text = font.render(str(points), True, (0, 0, 0), (255, 255, 255))
     window.blit(text, (5, 5))
             
