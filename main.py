@@ -106,9 +106,11 @@ while running:
         if i._x+64 >= i._w or i._x < 0:
             points += bounce
             i._spr = randint(1,37)
+            #i._x -= i._speedx * 2
         if i._y+64 >= i._h or i._y < 0:
             points += bounce
             i._spr = randint(1,37)
+            #i._y  -= i._speedy * 2
             # if points >= 20:
             #     points -= 20
             #     player._speedx *= 1.1

@@ -1,6 +1,7 @@
 import pygame as pg
 from pygame.locals import (K_UP, K_DOWN, K_LEFT, K_RIGHT)
 
+everyman = pg.image.load("assets/everyman.png")
 dvd_logo = pg.image.load("assets/temp_dvd.png")
 dvd_logo2 = pg.image.load("assets/temp_dvd2.png")
 dvd_logo3 = pg.image.load("assets/temp_dvd3.png")
@@ -11,7 +12,6 @@ dvd_logo7 = pg.image.load("assets/temp_dvd7.png")
 dvd_logo8 = pg.image.load("assets/temp_dvd8.png")
 #dvd_logo9 made by Magnus
 dvd_logo9 = pg.image.load("assets/temp_dvd9.png")
-everyman = pg.image.load("assets/everyman.png")
 
 
 class Player:
