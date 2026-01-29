@@ -74,12 +74,12 @@ while running:
                         points -= i._price
                         i._price += i._price
                         if i._type == "speed":
-                            speed *= 1.3
+                            speed *= 1.35   
                             for j in logos:
-                                j._speedx *= 1.5
-                                j._speedy *= 1.5
+                                j._speedx *= 1.4
+                                j._speedy *= 1.4
                         elif i._type == "boost":
-                            bounce += 1 + (0.1*bounce)
+                            bounce = round(bounce + 1 + (0.1*bounce), 2)
                         elif i._type == "more":
                             logos.append(Player(1, 1, window, speed*(1+(0.1*randint(-9, 9))), speed*(1+(0.1*randint(-9, 9))), page_w, page_h, randint(2, 29)))
 
@@ -106,7 +106,7 @@ while running:
         if i._x+64 >= i._w or i._x < 0:
             points += bounce
             i._spr = randint(1,29)
-        if i._y+64 >= i._h or i._y <0:
+        if i._y+64 >= i._h or i._y < 0:
             points += bounce
             i._spr = randint(1,29)
             # if points >= 20:
